@@ -33,7 +33,7 @@ class Router
 
     public function put($uri, $controller)
     {
-
+        $this->add($uri, $controller, 'PUT');
     }
 
     public function route($uri, $method)
