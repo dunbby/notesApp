@@ -34,19 +34,21 @@ $user = $db->query('SELECT * FROM users WHERE email = :email', [
 ])->find();
 
 if ($user) {
-    // user exists
-    header('location: /about');
-    exit();
+    return view('registration/create.view.php', [
+        'errors' => [
+            'password' => 'User with this email is already registered.'
+        ]
+    ]);
 } else {
     // create a new user
     $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
         'email' => $email,
-        'password' => $password
+        'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    $_SESSION['user'] = [
+    login([
         'email' => $email
-    ];
+    ]);
 
     header('Location: /');
     exit();
