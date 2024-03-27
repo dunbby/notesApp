@@ -1,0 +1,16 @@
+{
+    "name": "void/notes-app",
+    "authors": [
+        {
+            "name": "dunbby",
+            "email": "yoyordanov94@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}
